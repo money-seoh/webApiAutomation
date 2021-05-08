@@ -1,6 +1,6 @@
 package apiResponseTests;
 
-import apiBase.apiBaseClass;
+import apiUtils.apiBaseClass;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;

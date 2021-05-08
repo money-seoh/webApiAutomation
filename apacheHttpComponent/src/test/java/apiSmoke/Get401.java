@@ -1,6 +1,6 @@
 package apiSmoke;
 
-import apiBase.apiBaseClass;
+import apiUtils.apiBaseClass;
 import org.apache.http.client.methods.HttpGet;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
