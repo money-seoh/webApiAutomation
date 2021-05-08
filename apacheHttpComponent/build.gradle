@@ -1,0 +1,18 @@
+
+group 'org.shubham.webAPI'
+version '1.0_1'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation group: 'org.testng', name: 'testng', version: '7.0.0'
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.7'
+}
+
+test {
+    useTestNG()
+}
