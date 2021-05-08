@@ -1,6 +1,22 @@
-.gradle
-/build/
+# class files
+*.class
 
+# generated packaged java files
+*.jar
+*.war
+*.ear
+
+##############################
+## Gradle
+##############################
+bin/
+build/
+.gradle
+.gradle/
+
+# generated files
+bin/**
+gen/**
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -12,3 +28,52 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+##############################
+## IntelliJ
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+##############################
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
+.metadata
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.factorypath
+
+##############################
+## NetBeans
+##############################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##############################
+## Visual Studio Code
+##############################
+.vscode/
+.code-workspace
+
+##############################
+## OS X
+##############################
+.DS_Store
