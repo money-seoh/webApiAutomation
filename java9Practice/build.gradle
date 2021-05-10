@@ -1,9 +1,6 @@
 group 'org.shubham.webAPI'
 version '1.0_1'
 
-sourceCompatibility = 1.9
-targetCompatibility = 1.9
-
 dependencies {
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testImplementation  group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'

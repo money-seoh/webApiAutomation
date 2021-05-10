@@ -2,9 +2,6 @@
 group 'org.shubham.webAPI'
 version '1.0_1'
 
-sourceCompatibility = 11
-targetCompatibility = 11
-
 dependencies {
     // https://mvnrepository.com/artifact/org.testng/testng
     implementation group: 'org.testng', name: 'testng', version: '7.0.0'
