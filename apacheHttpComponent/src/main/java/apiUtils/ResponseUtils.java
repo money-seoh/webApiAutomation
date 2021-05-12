@@ -1,8 +1,13 @@
 package apiUtils;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import entities.User;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.util.EntityUtils;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -47,5 +52,13 @@ public class ResponseUtils {
 
         return httpHeaders.stream()
                 .anyMatch(header -> headerName.equals(header.getName()));
+    }
+
+    public static <T> T unmarshall(CloseableHttpResponse response, Class<T> classType) throws IOException {
+        String jsonBody = EntityUtils.toString(response.getEntity());
+
+        return new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                .readValue(jsonBody, classType);
     }
 }
