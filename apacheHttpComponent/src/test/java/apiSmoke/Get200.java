@@ -1,10 +1,7 @@
 package apiSmoke;
 
 import apiUtils.apiBaseClass;
-import entities.Credentials;
-import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -55,6 +52,7 @@ public class Get200 extends apiBaseClass {
         get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
+<<<<<<< HEAD
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 
@@ -81,6 +79,9 @@ public class Get200 extends apiBaseClass {
 
         httpResponse = httpClient.execute(get);
         String json = EntityUtils.toString(httpResponse.getEntity());
+=======
+        System.out.println(httpResponse);
+>>>>>>> parent of e1f2918 (basic learning complete)
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 

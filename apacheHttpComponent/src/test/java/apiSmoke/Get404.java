@@ -1,10 +1,12 @@
 package apiSmoke;
 
 import apiUtils.apiBaseClass;
+<<<<<<< HEAD
 import entities.Credentials;
 import org.apache.http.HttpHeaders;
+=======
+>>>>>>> parent of e1f2918 (basic learning complete)
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -25,6 +27,7 @@ public class Get404 extends apiBaseClass {
         assertEquals(actualStatus, 404);
     }
 
+<<<<<<< HEAD
     @Test
     public void privateRepositoryWithoutToken() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/repos/" + Credentials.ID +"/"+Credentials.PRIVATE_REPO);
@@ -39,4 +42,6 @@ public class Get404 extends apiBaseClass {
         assertEquals(actualStatus, 404);
     }
 
+=======
+>>>>>>> parent of e1f2918 (basic learning complete)
 }
