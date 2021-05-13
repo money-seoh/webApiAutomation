@@ -1,6 +1,8 @@
 package apiSmoke;
 
 import apiUtils.apiBaseClass;
+import entities.Credentials;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -23,6 +25,7 @@ public class Get401 extends apiBaseClass {
     @Test(dataProvider = "endpoints")
     public void onUserEndPoint(String endpoint) throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT.concat(endpoint));
+
         httpResponse = httpClient.execute(get);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();

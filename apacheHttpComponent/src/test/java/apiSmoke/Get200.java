@@ -16,6 +16,8 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onBaseEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
@@ -26,6 +28,8 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onRateLimitEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/rate_limit");
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
@@ -36,8 +40,9 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onSearchReposEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/search/repositories?q=java");
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
-        System.out.println(httpResponse);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 
@@ -47,6 +52,8 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onOrgSpecificRepoEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/orgs/octokit/repos");
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
@@ -70,11 +77,10 @@ public class Get200 extends apiBaseClass {
     @Test
     public void publicRepoAccess() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/repos/" + Credentials.ID +"/"+Credentials.REPO);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
         String json = EntityUtils.toString(httpResponse.getEntity());
-
-        System.out.println(json);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 

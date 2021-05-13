@@ -2,6 +2,7 @@ package apiSmoke;
 
 import apiUtils.apiBaseClass;
 import entities.Credentials;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;
@@ -15,6 +16,8 @@ public class Get404 extends apiBaseClass {
     @Test
     public void onInvalidEndPoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/invalidUrl");
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
@@ -33,7 +36,7 @@ public class Get404 extends apiBaseClass {
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 
-        assertEquals(actualStatus, 200);
+        assertEquals(actualStatus, 404);
     }
 
 }

@@ -20,6 +20,8 @@ public class ResponseHeaders extends apiBaseClass {
     @Test
     public void contentTypeIsJson() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         Header contentType = httpResponse.getEntity().getContentType();
@@ -32,6 +34,8 @@ public class ResponseHeaders extends apiBaseClass {
     @Test
     public void serverIsGithub() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         String headerValue = ResponseUtils.getHeader(httpResponse, "Server");
@@ -42,6 +46,8 @@ public class ResponseHeaders extends apiBaseClass {
     @Test
     public void serverIsGithubUsingLambda() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         String headerValue = ResponseUtils.getHeaderUsingLambda(httpResponse, "Server");
@@ -52,16 +58,20 @@ public class ResponseHeaders extends apiBaseClass {
     @Test
     public void xRateLimitIsSixty() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         String headerValue = ResponseUtils.getHeaderUsingLambda(httpResponse, "X-RateLimit-Limit");
 
-        assertEquals(headerValue, "60");
+        assertEquals(headerValue, "5000");
     }
 
     @Test
     public void eTagIsPresentInHeader() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         boolean presence = ResponseUtils.isHeaderPresent(httpResponse, "ETag");
@@ -73,7 +83,9 @@ public class ResponseHeaders extends apiBaseClass {
     public void correctOptionsPresentInHeader() throws IOException {
         String header = "access-control-allow-methods";
         String expectedValue = "GET, POST, PATCH, PUT, DELETE";
-        HttpOptions get = new HttpOptions(BASE_ENDPOINT+"/users/money-seoh");
+        HttpOptions get = new HttpOptions(BASE_ENDPOINT+"/users/"+Credentials.ID);
+        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
+
         httpResponse = httpClient.execute(get);
 
         String actualValue = ResponseUtils.getHeaderUsingLambda(httpResponse, header);
