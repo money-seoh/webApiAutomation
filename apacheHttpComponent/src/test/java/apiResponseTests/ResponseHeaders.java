@@ -1,8 +1,11 @@
 package apiResponseTests;
 
 import apiUtils.apiBaseClass;
+import entities.Credentials;
 import org.apache.http.Header;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpOptions;
 import org.apache.http.entity.ContentType;
 import org.testng.annotations.Test;
 import apiUtils.ResponseUtils;
@@ -75,7 +78,6 @@ public class ResponseHeaders extends apiBaseClass {
 
         assertTrue(presence);
     }
-<<<<<<< HEAD
 
     @Test
     public void correctOptionsPresentInHeader() throws IOException {
@@ -94,6 +96,5 @@ public class ResponseHeaders extends apiBaseClass {
 
         assertEquals(actualValue, expectedValue);
     }
-=======
->>>>>>> parent of e1f2918 (basic learning complete)
+
 }

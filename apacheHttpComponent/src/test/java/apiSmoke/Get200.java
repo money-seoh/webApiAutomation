@@ -1,7 +1,10 @@
 package apiSmoke;
 
 import apiUtils.apiBaseClass;
+import entities.Credentials;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.util.EntityUtils;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -13,7 +16,6 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onBaseEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT);
-        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
 
@@ -25,7 +27,6 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onRateLimitEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/rate_limit");
-        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
 
@@ -37,7 +38,6 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onSearchReposEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/search/repositories?q=java");
-        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
 
@@ -49,10 +49,8 @@ public class Get200 extends apiBaseClass {
     @Test
     public void onOrgSpecificRepoEndpoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/orgs/octokit/repos");
-        get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
-<<<<<<< HEAD
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 
@@ -62,6 +60,7 @@ public class Get200 extends apiBaseClass {
     @Test
     public void privateRepositoryWithToken() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/repos/" + Credentials.ID +"/"+Credentials.PRIVATE_REPO);
+        System.out.println(Credentials.TOKEN);
         get.setHeader(HttpHeaders.AUTHORIZATION, "token " + Credentials.TOKEN);
 
         httpResponse = httpClient.execute(get);
@@ -79,9 +78,7 @@ public class Get200 extends apiBaseClass {
 
         httpResponse = httpClient.execute(get);
         String json = EntityUtils.toString(httpResponse.getEntity());
-=======
-        System.out.println(httpResponse);
->>>>>>> parent of e1f2918 (basic learning complete)
+
 
         int actualStatus = httpResponse.getStatusLine().getStatusCode();
 
