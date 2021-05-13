@@ -1,8 +1,11 @@
 package apiResponseTests;
 
 import apiUtils.apiBaseClass;
+import entities.Credentials;
 import org.apache.http.Header;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpOptions;
 import org.apache.http.entity.ContentType;
 import org.testng.annotations.Test;
 import apiUtils.ResponseUtils;
@@ -64,5 +67,21 @@ public class ResponseHeaders extends apiBaseClass {
         boolean presence = ResponseUtils.isHeaderPresent(httpResponse, "ETag");
 
         assertTrue(presence);
+    }
+
+    @Test
+    public void correctOptionsPresentInHeader() throws IOException {
+        String header = "access-control-allow-methods";
+        String expectedValue = "GET, POST, PATCH, PUT, DELETE";
+        HttpOptions get = new HttpOptions(BASE_ENDPOINT+"/users/money-seoh");
+        httpResponse = httpClient.execute(get);
+
+        String actualValue = ResponseUtils.getHeaderUsingLambda(httpResponse, header);
+
+        int actualStatus = httpResponse.getStatusLine().getStatusCode();
+
+        assertEquals(actualStatus, 204);
+
+        assertEquals(actualValue, expectedValue);
     }
 }

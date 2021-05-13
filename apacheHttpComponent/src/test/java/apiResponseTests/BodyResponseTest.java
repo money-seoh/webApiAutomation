@@ -2,9 +2,7 @@ package apiResponseTests;
 
 import apiUtils.ResponseUtils;
 import apiUtils.apiBaseClass;
-import entities.NotFound;
-import entities.RateLimit;
-import entities.User;
+import entities.*;
 import org.apache.http.client.methods.HttpGet;
 import org.testng.annotations.Test;
 
@@ -16,18 +14,18 @@ public class BodyResponseTest extends apiBaseClass {
 
     @Test
     public void returnsCorrectLogin() throws IOException {
-        HttpGet get = new HttpGet(BASE_ENDPOINT+"/users/money-seoh");
+        HttpGet get = new HttpGet(BASE_ENDPOINT+"/users/"+Credentials.ID);
 
         httpResponse = httpClient.execute(get);
 
         User user = ResponseUtils.unmarshall(httpResponse, User.class);
 
-        assertEquals(user.getLogin(), "money-seoh");
+        assertEquals(user.getLogin(), Credentials.ID);
     }
 
     @Test
     public void returnsCorrectId() throws IOException {
-        HttpGet get = new HttpGet(BASE_ENDPOINT+"/users/money-seoh");
+        HttpGet get = new HttpGet(BASE_ENDPOINT+"/users/"+Credentials.ID);
 
         httpResponse = httpClient.execute(get);
 
