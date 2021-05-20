@@ -21,6 +21,10 @@ dependencies {
 
 }
 
-test {
-    useTestNG()
+task testApacheHttpComponent(type: Test) {
+    useTestNG{
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
 }
