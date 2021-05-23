@@ -29,12 +29,15 @@ Gradle is the build and dependency management tool used for creating this projec
 | ------------- | ------------- | ------------ |
 | httpClient  | 4.5.7  | org.apache.httpcomponents |
 | testng  | 7.0.0  | org.testng |
+| jackson-databind  | 2.10.2 | com.fasterxml.jackson.core |
 
 ## restAssure Module
 | Dependency Name  | Version | Dependency Provider |
 | ------------- | ------------- | ------------ |
-| rest-assured  | 4.3.0  | io.rest-assured |
-| testng  | 7.0.0  | org.testng |
+| rest-assured  | 4.3.3  | io.rest-assured |
+| junit-jupiter-api  | 5.7.0  | org.junit.jupiter|
+| junit-jupiter-engine  | 5.7.0  | org.junit.jupiter |
+| jackson-databind  | 2.10.2 | com.fasterxml.jackson.core |
 
 ## java11Practice Module
 | Dependency Name  | Version | Dependency Provider |
@@ -49,7 +52,11 @@ Gradle is the build and dependency management tool used for creating this projec
 | junit-jupiter-engine  | 5.7.0  | org.junit.jupiter |
 
 ## java9Practice Module
-No Dependecy used
+| Dependency Name  | Version | Dependency Provider |
+| ------------- | ------------- | ------------ |
+| junit-jupiter-api  | 5.7.0  | org.junit.jupiter|
+| junit-jupiter-engine  | 5.7.0  | org.junit.jupiter |
+| test-graphql-java  | 1.0.0  | com.vimalselvam |
 
 # Prerequisites
 We need follwoing to make sure that the project smothly on any machine:
