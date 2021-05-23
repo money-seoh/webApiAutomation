@@ -4,15 +4,24 @@ import apiUtils.apiBaseClass;
 import entities.Credentials;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import static org.testng.Assert.assertEquals;
 
 public class Get404 extends apiBaseClass {
 
-    @Test
+    @BeforeMethod
+    private void localSetup(Method testMethod){
+        String value = testMethod.getAnnotation(Test.class).description();
+
+        System.out.println("Starting test: "+testMethod.getName()+ " with description: \n**** " + value + " ****");
+    }
+
+    @Test(description = "Response code should be 404 on invalid endpoint of API.")
     public void onInvalidEndPoint() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/invalidUrl");
 
@@ -23,7 +32,7 @@ public class Get404 extends apiBaseClass {
         assertEquals(actualStatus, 404);
     }
 
-    @Test
+    @Test(description = "Response code should be 404 if accessing private repository without authentication.")
     public void privateRepositoryWithoutToken() throws IOException {
         HttpGet get = new HttpGet(BASE_ENDPOINT+"/repos/" + Credentials.ID +"/"+Credentials.PRIVATE_REPO);
 

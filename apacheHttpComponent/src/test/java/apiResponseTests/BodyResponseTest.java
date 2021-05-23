@@ -3,7 +3,6 @@ package apiResponseTests;
 import apiUtils.ResponseUtils;
 import apiUtils.apiBaseClass;
 import entities.*;
-import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.HttpGet;
 import org.testng.annotations.Test;
 

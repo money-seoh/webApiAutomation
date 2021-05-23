@@ -16,7 +16,6 @@ public class apiBaseClass {
 
     @BeforeMethod
     protected void setup() {
-        System.out.println("Running tests for "+this.getClass().toString() + " class.");
         httpClient = HttpClientBuilder.create().build();
     }
 
